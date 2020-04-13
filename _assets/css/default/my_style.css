@@ -1,0 +1,9 @@
+.error {
+    color: red
+}
+
+.imagem-box {
+    width: 20%;
+    height: 20%;
+    background-color: #ccc;
+}
