@@ -2,7 +2,7 @@
 <div id="content" class="content">
     <!----------------------------------------------->
     <!-- TITULO CONTEUDO -->
-    <h2 class="page-header"><i class="fa fa-home mr-2"></i>PÁGINA INICIAL - RECURSOS HUMANOS</h2>
+    <h2 class="page-header"><i class="fa fa-home mr-2"></i>PÁGINA INICIAL - RH</h2>
     <?= $this->session->flashdata('msg'); ?>
     <!-- FIM TITULO CONTEUDO -->
 
