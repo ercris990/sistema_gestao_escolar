@@ -8,13 +8,13 @@ class Pauta_Excel_4 extends CI_Controller
 		$this->db->select('*');													  					// select tudo
 		$this->db->from('notas_disciplina');												 		// da tbl matricula
 		$this->db->where("anolectivo_id", $anolectivo);												// onde
-        $this->db->where("turma_id", $turma);									 					// onde
-		$this->db->join('aluno', 		'aluno.id_aluno = notas_disciplina.aluno_id');						// join ano lectivo e matricula
-		$this->db->join('anolectivo', 	'anolectivo.id_ano = notas_disciplina.anolectivo_id');		// join ano lectivo e matricula
-		$this->db->join('turma', 		'turma.id_turma = notas_disciplina.turma_id');						// join turma e matricula
-		$this->db->join('classe', 		'classe.id_classe = turma.classe_id');							// Join tbl classe [turma]
-		$this->db->join('periodo', 		'periodo.id_periodo = turma.periodo_id');						// join periodo e turma
-		$this->db->join('sala', 		'sala.id_sala = turma.sala_id');						// join periodo e turma
+    $this->db->where("turma_id", $turma);									 					// onde
+		$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id');						// join ano lectivo e matricula
+		$this->db->join('anolectivo', 'anolectivo.id_ano = notas_disciplina.anolectivo_id');		// join ano lectivo e matricula
+		$this->db->join('turma', 'turma.id_turma = notas_disciplina.turma_id');						// join turma e matricula
+		$this->db->join('classe',	'classe.id_classe = turma.classe_id');							// Join tbl classe [turma]
+		$this->db->join('periodo', 'periodo.id_periodo = turma.periodo_id');						// join periodo e turma
+		$this->db->join('sala',	'sala.id_sala = turma.sala_id');						// join periodo e turma
 		$dados["dados_turma"] = $this->db->get()->row();										    // retorna 1 linha
 		/* --------------------------------------------------------------------------------------------------------------------------- */
 		$this->db->from('notas_disciplina');														// de notas disciplina

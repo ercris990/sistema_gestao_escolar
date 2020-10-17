@@ -499,17 +499,17 @@ class Listagem extends CI_Controller
 		$this->db->select('*');															// select tudo
 		$this->db->from('matricula');													// da tbl matricula
 		$this->db->where("anolectivo_id", $anolectivo);									// onde
-        $this->db->where("turma_id", $turma);										// onde 
+    $this->db->where("turma_id", $turma);										// onde 
 		$this->db->order_by("nome", "asc");  											// Ordenar a travez do nome
 		$this->db->join('aluno', 'aluno.id_aluno = matricula.aluno_id');		 		// Join aluno e matricula
-        $this->db->join('anolectivo', 'anolectivo.id_ano = matricula.anolectivo_id'); 	// Join anolectivo e matricula
+    $this->db->join('anolectivo', 'anolectivo.id_ano = matricula.anolectivo_id'); 	// Join anolectivo e matricula
 		$this->db->join('turma', 'turma.id_turma = matricula.turma_id');		 		// Join turma e matricula
 		$dados['alunos'] = $this->db->get()->result();									// retorna várias linhas
 		/* ===========================================================================================================*/
 		$this->db->select('*');													  		// select tudo
 		$this->db->from('matricula');												 	// da tbl matricula
 		$this->db->where("anolectivo_id", $anolectivo);									// onde
-        $this->db->where("turma_id", $turma);									 	// onde
+    $this->db->where("turma_id", $turma);									 	// onde
 		$this->db->join('turma', 'turma.id_turma = matricula.turma_id');				// join turma e matricula
 		$this->db->join('classe', 'classe.id_classe = turma.classe_id');				// join classe e matricula
 		$this->db->join('anolectivo', 'anolectivo.id_ano = matricula.anolectivo_id');	// join ano lectivo e matricula
