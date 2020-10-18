@@ -4,8 +4,8 @@
     <h4 class="page-header text-uppercase"><i class="fa fa-list mr-5"></i>Pauta Geral -
       <?= $listagem_alunos->nome_classe; ?></h4>
     <!-- ---------------------------------------------------------------------------------------------------------------- -->
-    <a href="<?= site_url('pautas_xls/pauta_xls_01')?>" class="btn btn-outline-success bts-sm"><i
-        class="fa fa-file-excel mr-2"></i>EXPORTAR PARA EXECEL</a>
+    <a href="<?= site_url('pautas_xls/pauta_xls_01/export_xls_01/'.$listagem_alunos->id_ano.'/'.$listagem_alunos->id_turma)?>"
+      class="btn btn-outline-success bts-sm"><i class="fa fa-file-excel mr-2"></i>EXPORTAR PARA EXECEL</a>
     <!-- ---------------------------------------------------------------------------------------------------------------- -->
     <!-- <a href="<?= site_url('pauta_excel_1/exportar_pauta_1/'.$listagem_alunos->id_ano.'/'.$listagem_alunos->id_turma)?>"
       class="btn btn-outline-success bts-sm"><i class="fa fa-file-excel mr-2"></i>EXPORTAR PARA EXECEL</a> -->
