@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class Pauta_xls_01 extends CI_Controller 
+class Pauta_xls_06 extends CI_Controller 
 {
-	public function export_xls_01($anolectivo, $turma) {
+	public function export_xls_06($anolectivo, $turma) {
 		/*-----------------------------------------------------------------------------------------------------------*/
 			$this->db->select('*'); // select tudo
 			$this->db->from('notas_disciplina'); // da tbl matricula
