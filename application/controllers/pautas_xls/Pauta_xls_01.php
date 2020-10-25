@@ -137,7 +137,7 @@ class Pauta_xls_01 extends CI_Controller
 			$sheet->setCellValue('U11', 'CPE');
 			$sheet->setCellValue('V11', 'CF');
 			/* ----------------------------------------------------------------------------------------------------------- */
-			$sheet->setCellValue('W10', 'OBSERVAÇÃO');
+			$sheet->setCellValue('W10', 'OBS');
 			/* ================ Condicional - Notas ================ */
 			$conditional1 = new \PhpOffice\PhpSpreadsheet\Style\Conditional();
 			$conditional1->setConditionType(\PhpOffice\PhpSpreadsheet\Style\Conditional::CONDITION_CELLIS);
@@ -284,6 +284,8 @@ class Pauta_xls_01 extends CI_Controller
 		$spreadsheet->getActiveSheet()->mergeCells('A'.$row.':W'.$row);
 		$spreadsheet->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 		$sheet->setCellValue('A'.$row, 'Luanda, aos '.strftime('%d de %B de %Y', strtotime(date('d-m-Y'))));
+			/* ================ Altura da Linha ================ */
+			$spreadsheet->getActiveSheet()->getRowDimension(''.$row)->setRowHeight(30);
 			/* ================================ Mesclar Célula - Horizontal ================================ */
 			$spreadsheet->getActiveSheet()->mergeCells('A1:W1');
 			$spreadsheet->getActiveSheet()->mergeCells('A2:W2');
@@ -359,12 +361,6 @@ class Pauta_xls_01 extends CI_Controller
 		/* ================ Orientação e Tamanho da Página  ================ */ 
 		$spreadsheet->getActiveSheet()->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
 		$spreadsheet->getActiveSheet()->getPageSetup()->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_A3_EXTRA_PAPER);
-		/* ================ Ínserir Imagem ================ */
-		$drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-		$drawing->setName('Logo');
-		$drawing->setDescription('Logo');
-		$drawing->setPath('./_assets/img/_insignia.jpg');
-		$drawing->setHeight(36);
 		/* ================ Informações do Documento ================ */ 
 		$spreadsheet->getProperties()
 		->setCreator("Sistema de Gestão Escolar")

@@ -7,86 +7,85 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class Pauta_xls_03 extends CI_Controller 
 {
 	public function export_xls_03($anolectivo, $turma) {
-		/*-----------------------------------------------------------------------------------------------------------*/
-			$this->db->select('*'); // select tudo
-			$this->db->from('notas_disciplina'); // da tbl matricula
-			$this->db->where("anolectivo_id", $anolectivo); // onde
-			$this->db->where("turma_id", $turma); // onde
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id'); // join ano lectivo e matricula
-			$this->db->join('anolectivo', 'anolectivo.id_ano = notas_disciplina.anolectivo_id'); // join ano lectivo e matricula
-			$this->db->join('turma', 'turma.id_turma = notas_disciplina.turma_id'); // join turma e matricula
-			$this->db->join('classe', 'classe.id_classe = turma.classe_id'); // Join tbl classe [turma]
-			$this->db->join('periodo', 'periodo.id_periodo = turma.periodo_id'); // join periodo e turma
-			$this->db->join('sala', 'sala.id_sala = turma.sala_id'); // join periodo e turma
-			$dados["dados_turma"] = $this->db->get()->row(); // retorna 1 linha
-		/* ----------------------------------------------------------------------------------------------------------- */
-			$this->db->from('notas_disciplina'); // de notas disciplina
-			$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
-			$this->db->where("turma_id", $turma);	// filtro - turma
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left'); // join turma e matricula
-			$this->db->group_by('notas_disciplina.aluno_id'); // agrupamento
-			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
-			$dados['alunos'] = $this->db->get()->result(); // retorna várias linhas
-			/* ----------------------------------------------------------------------------------------------------------- */
-			$this->db->select('*'); // seleciona tudo
-			$this->db->from('notas_disciplina'); // de notas disciplina
-			$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
-			$this->db->where("turma_id", $turma); // filtro - turma
-			$this->db->where("disciplina_id", '28'); // filtro - turma
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left'); // join turma e matricula
-			$this->db->group_by('notas_disciplina.aluno_id'); // agrupamento
-			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
-			$dados['l_portuguesa'] = $this->db->get()->result(); // retorna várias linhas
-			/* ----------------------------------------------------------------------------------------------------------- */
-			$this->db->select('*');	// seleciona tudo
-			$this->db->from('notas_disciplina'); // de notas disciplina
-			$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
-			$this->db->where("turma_id", $turma); // filtro - turma
-			$this->db->where("disciplina_id", '29'); // filtro - turma
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left'); // join turma e matricula
-			$this->db->group_by('notas_disciplina.aluno_id'); // agrupamento
-			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
-			$dados['matematica'] = $this->db->get()->result(); // retorna várias linhas
-			/* ----------------------------------------------------------------------------------------------------------- */
-			$this->db->select('*');// seleciona tudo
-			$this->db->from('notas_disciplina'); // de notas disciplina
-			$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
-			$this->db->where("turma_id", $turma); // filtro - turma
-			$this->db->where("disciplina_id", '30'); // filtro - turma
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left'); // join turma e matricula
-			$this->db->group_by('notas_disciplina.aluno_id');// agrupamento
-			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
-			$dados['estudo_meio'] = $this->db->get()->result(); // retorna várias linhas
-			/* ----------------------------------------------------------------------------------------------------------- */
-			$this->db->select('*');// seleciona tudo
-			$this->db->from('notas_disciplina'); // de notas disciplina
-			$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
-			$this->db->where("turma_id", $turma); // filtro - turma
-			$this->db->where("disciplina_id", '31'); // filtro - turma
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left'); // join turma e matricula
-			$this->db->group_by('notas_disciplina.aluno_id');// agrupamento
-			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
-			$dados['ed_musical'] = $this->db->get()->result(); // retorna várias linhas
-			/* ----------------------------------------------------------------------------------------------------------- */
-			$this->db->select('*');// seleciona tudo
-			$this->db->from('notas_disciplina'); // de notas disciplina
-			$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
-			$this->db->where("turma_id", $turma); // filtro - turma
-			$this->db->where("disciplina_id", '32'); // filtro - turma
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left'); // join turma e matricula
-			$this->db->group_by('notas_disciplina.aluno_id');// agrupamento
-			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
-			$dados['ed_fisica'] = $this->db->get()->result(); // na várias linhas
-			/* ----------------------------------------------------------------------------------------------------------- */
-			$this->db->select('*');// seleciona tudo
-			$this->db->from('notas_disciplina'); // de notas disciplina
-			$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
-			$this->db->where("turma_id", $turma); // filtro - turma
-			$this->db->where("disciplina_id", '33'); // filtro - turma
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left'); // join turma e matricula
-			$this->db->group_by('notas_disciplina.aluno_id');// agrupamento
-			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
-			$dados['ed_plastica'] = $this->db->get()->result(); // retorna várias linhas
+		$this->db->select('*');													  					// select tudo
+		$this->db->from('notas_disciplina');												 		// da tbl matricula
+		$this->db->where("anolectivo_id", $anolectivo);												// onde
+        $this->db->where("turma_id", $turma);									 					// onde
+		$this->db->join('aluno', 		'aluno.id_aluno = notas_disciplina.aluno_id');						// join ano lectivo e matricula
+		$this->db->join('anolectivo', 	'anolectivo.id_ano = notas_disciplina.anolectivo_id');		// join ano lectivo e matricula
+		$this->db->join('turma', 		'turma.id_turma = notas_disciplina.turma_id');						// join turma e matricula
+		$this->db->join('classe', 		'classe.id_classe = turma.classe_id');							// Join tbl classe [turma]
+		$this->db->join('periodo', 		'periodo.id_periodo = turma.periodo_id');						// join periodo e turma
+		$this->db->join('sala', 		'sala.id_sala = turma.sala_id');						// join periodo e turma
+		$dados["dados_turma"] = $this->db->get()->row();										    // retorna 1 linha
+		/* ------------------------------------------------------------------------------------------------------------- */
+		$this->db->from('notas_disciplina');														// de notas disciplina
+		$this->db->where("anolectivo_id", $anolectivo);												// filtro - anolectivo
+		$this->db->where("turma_id", $turma);														// filtro - turma
+		$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left');				// join turma e matricula
+		$this->db->group_by('notas_disciplina.aluno_id');											// agrupamento
+		$this->db->order_by("nome", "asc");  												 		// Ordenar a travez do nome
+		$dados['alunos'] = $this->db->get()->result();												// retorna várias linhas
+		/* ------------------------------------------------------------------------------------------------------------- */
+		$this->db->select('*');																				// seleciona tudo
+		$this->db->from('notas_disciplina');																// de notas disciplina
+		$this->db->where("anolectivo_id", $anolectivo);														// filtro - anolectivo
+		$this->db->where("turma_id", $turma);																// filtro - turma
+		$this->db->where("disciplina_id", '52');															// filtro - turma
+		$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left');						// join turma e matricula
+		$this->db->group_by('notas_disciplina.aluno_id');													// agrupamento
+		$this->db->order_by("nome", "asc");  												 				// Ordenar a travez do nome
+		$dados['l_portuguesa'] = $this->db->get()->result();												// retorna várias linhas
+		/*--------------------------------------------------------------------------------------------------------------------------------*/
+		$this->db->select('*');																				// seleciona tudo
+		$this->db->from('notas_disciplina');																// de notas disciplina
+		$this->db->where("anolectivo_id", $anolectivo);														// filtro - anolectivo
+		$this->db->where("turma_id", $turma);																// filtro - turma
+		$this->db->where("disciplina_id", '53');															// filtro - turma
+		$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left');						// join turma e matricula
+		$this->db->group_by('notas_disciplina.aluno_id');													// agrupamento
+		$this->db->order_by("nome", "asc");  												 				// Ordenar a travez do nome
+		$dados['matematica'] = $this->db->get()->result();													// retorna várias linhas
+		/*--------------------------------------------------------------------------------------------------------------------------------*/
+		$this->db->select('*');																				// seleciona tudo
+		$this->db->from('notas_disciplina');																// de notas disciplina
+		$this->db->where("anolectivo_id", $anolectivo);														// filtro - anolectivo
+		$this->db->where("turma_id", $turma);																// filtro - turma
+		$this->db->where("disciplina_id", '54');															// filtro - turma
+		$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left');						// join turma e matricula
+		$this->db->group_by('notas_disciplina.aluno_id');													// agrupamento
+		$this->db->order_by("nome", "asc");  												 				// Ordenar a travez do nome
+		$dados['estudo_meio'] = $this->db->get()->result();													// retorna várias linhas
+		/*--------------------------------------------------------------------------------------------------------------------------------*/
+		$this->db->select('*');																				// seleciona tudo
+		$this->db->from('notas_disciplina');																// de notas disciplina
+		$this->db->where("anolectivo_id", $anolectivo);														// filtro - anolectivo
+		$this->db->where("turma_id", $turma);																// filtro - turma
+		$this->db->where("disciplina_id", '55');															// filtro - turma
+		$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left');						// join turma e matricula
+		$this->db->group_by('notas_disciplina.aluno_id');													// agrupamento
+		$this->db->order_by("nome", "asc");  												 				// Ordenar a travez do nome
+		$dados['ed_musical'] = $this->db->get()->result();													// retorna várias linhas
+		/*--------------------------------------------------------------------------------------------------------------------------------*/
+		$this->db->select('*');																				// seleciona tudo
+		$this->db->from('notas_disciplina');																// de notas disciplina
+		$this->db->where("anolectivo_id", $anolectivo);														// filtro - anolectivo
+		$this->db->where("turma_id", $turma);																// filtro - turma
+		$this->db->where("disciplina_id", '56');															// filtro - turma
+		$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left');						// join turma e matricula
+		$this->db->group_by('notas_disciplina.aluno_id');													// agrupamento
+		$this->db->order_by("nome", "asc");  												 				// Ordenar a travez do nome
+		$dados['ed_fisica'] = $this->db->get()->result();													// retorna várias linhas
+		/*--------------------------------------------------------------------------------------------------------------------------------*/
+		$this->db->select('*');																				// seleciona tudo
+		$this->db->from('notas_disciplina');																// de notas disciplina
+		$this->db->where("anolectivo_id", $anolectivo);														// filtro - anolectivo
+		$this->db->where("turma_id", $turma);																// filtro - turma
+		$this->db->where("disciplina_id", '57');															// filtro - turma
+		$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left');						// join turma e matricula
+		$this->db->group_by('notas_disciplina.aluno_id');													// agrupamento
+		$this->db->order_by("nome", "asc");  												 				// Ordenar a travez do nome
+		$dados['ed_plastica'] = $this->db->get()->result();													// retorna várias linhas
 		/* =========================================================================================================== */
 			$spreadsheet = new Spreadsheet();
 			$sheet = $spreadsheet->getActiveSheet();
@@ -137,7 +136,7 @@ class Pauta_xls_03 extends CI_Controller
 			$sheet->setCellValue('U11', 'CPE');
 			$sheet->setCellValue('V11', 'CF');
 			/* ----------------------------------------------------------------------------------------------------------- */
-			$sheet->setCellValue('W10', 'OBSERVAÇÃO');
+			$sheet->setCellValue('W10', 'OBS');
 			/* ================ Condicional - Notas ================ */
 			$conditional1 = new \PhpOffice\PhpSpreadsheet\Style\Conditional();
 			$conditional1->setConditionType(\PhpOffice\PhpSpreadsheet\Style\Conditional::CONDITION_CELLIS);
@@ -284,6 +283,8 @@ class Pauta_xls_03 extends CI_Controller
 		$spreadsheet->getActiveSheet()->mergeCells('A'.$row.':W'.$row);
 		$spreadsheet->getActiveSheet()->getStyle('A'.$row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 		$sheet->setCellValue('A'.$row, 'Luanda, aos '.strftime('%d de %B de %Y', strtotime(date('d-m-Y'))));
+			/* ================ Altura da Linha ================ */
+			$spreadsheet->getActiveSheet()->getRowDimension(''.$row)->setRowHeight(30);
 			/* ================================ Mesclar Célula - Horizontal ================================ */
 			$spreadsheet->getActiveSheet()->mergeCells('A1:W1');
 			$spreadsheet->getActiveSheet()->mergeCells('A2:W2');
@@ -359,19 +360,13 @@ class Pauta_xls_03 extends CI_Controller
 		/* ================ Orientação e Tamanho da Página  ================ */ 
 		$spreadsheet->getActiveSheet()->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
 		$spreadsheet->getActiveSheet()->getPageSetup()->setPaperSize(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::PAPERSIZE_A3_EXTRA_PAPER);
-		/* ================ Ínserir Imagem ================ */
-		$drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-		$drawing->setName('Logo');
-		$drawing->setDescription('Logo');
-		$drawing->setPath('./_assets/img/_insignia.jpg');
-		$drawing->setHeight(36);
 		/* ================ Informações do Documento ================ */ 
 		$spreadsheet->getProperties()
 		->setCreator("Sistema de Gestão Escolar")
 		->setLastModifiedBy("Sistema de Gestão Escolar")
-		->setTitle("Pauta 1ª Classe")
+		->setTitle("Pauta 3ª Classe")
 		->setSubject("Pauta Geral")
-		->setDescription("Pauta Geral 1ª Classe.")
+		->setDescription("Pauta Geral 3ª Classe.")
 		->setCategory("Pauta");
 		/* ----------------------------------------------------------------------------------------------------------- */
 			$writer = new Xlsx($spreadsheet);

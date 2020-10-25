@@ -420,11 +420,11 @@ class Matricula extends CI_Controller
 		$this->db->join('curso',  	  'curso.id_curso = matricula.curso_id');
 		$dados["matricula_select"] = $this->db->get()->row();													// Resulta uma linha
 		// ===========================================================================================================================
-		$this->db->select('*');																				// Selecione Tudo
-		$this->db->from('notas_disciplina');																// Da tabela Matricula
-		$this->db->where('matricula_id', $id_matricula);													// Aonde o Id_Aluno = $id (get id aluno)
+		$this->db->select('*'); // Selecione Tudo
+		$this->db->from('notas_disciplina'); // Da tabela Matricula
+		$this->db->where('matricula_id', $id_matricula); // Aonde o Id_Aluno = $id (get id aluno)
 		$this->db->join('disciplina',	'disciplina.id_disciplina = notas_disciplina.disciplina_id');	// Join [Classe = Matricula]
-		$dados["matricula"] = $this->db->get()->result();												// Resulta varias linhas da tabela
+		$dados["matricula"] = $this->db->get()->result();	// Resulta varias linhas da tabela
 		// ===========================================================================================================================
 		$dados["matricula_select"] = $this->Matricula_Model->retorna_matricula($id_matricula);
 		// ===========================================================================================================================
@@ -482,9 +482,9 @@ class Matricula extends CI_Controller
 	{
 		$this->Matricula_Model->guardar_disciplinas();
 		$id_matricula 	= $this->input->post('matricula'); 		//	pega o id da matricula
-		$id_classe 		= $this->input->post('classe');     	//	pega o id da classe
+		$id_classe 		  = $this->input->post('classe');     	//	pega o id da classe
 		$anolectivo_id  = $this->input->post('anolectivo');		//  pega o id do anolectivo
-		$turma_id  	  	= $this->input->post('turma');			//  pega o id da turma
+		$turma_id  	  	= $this->input->post('turma');			  //  pega o id da turma
 		echo $this->session->set_flashdata('msg',"<div class='alert alert-success text-center'>DISCIPLINAS ADICIONADA COM SUCESSO</div>");	
 		redirect('secretaria/matricula/caderneta_aluno/'.$id_matricula.'/'.$id_classe.'/'.$this->session->userdata('nivel_acesso'));
 	}
