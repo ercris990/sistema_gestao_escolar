@@ -530,7 +530,7 @@ class Listagem extends CI_Controller
 	}
 	/*					 							listar alunos/ano/turma
 	==================================================================================================================*/
-	public function mini_pauta_pdf( $anolectivo, $turma, $disciplina )
+	public function mini_pauta_pdf( $anolectivo, $turma, $disciplina, $classe )
 	{
 		$this->db->select('*');													  					// select tudo
 		$this->db->from('notas_disciplina');												 		// da tbl matricula
@@ -556,8 +556,16 @@ class Listagem extends CI_Controller
 		$dados['alunos'] = $this->db->get()->result();												// retorna várias linhas
 		/* ===========================================================================================================*/
 		// Carrega o PDF
+		if ($classe == 41) 
+		{
+		// SE classe = iniciação - chama a view da iniciação
 		$this->load->library("My_dompdf");
-		$this->my_dompdf->gerar_pdf('reports/mini_pauta_pdf', $dados, TRUE);
+		$this->my_dompdf->gerar_pdf('reports/mini_pauta_iniciacao_pdf', $dados, TRUE);
+		} else {
+		// SE não - chama a view padrão
+		$this->load->library("My_dompdf");
+		$this->my_dompdf->gerar_pdf('reports/mini_pauta_pdf', $dados, TRUE);		
+		}
 	}
 	//==================================================================================================================
 	//												listar alunos/ano/turma
@@ -781,29 +789,29 @@ class Listagem extends CI_Controller
 		$dados["options_classe"] = $this->Classe_Model->selectClasses();
 		$dados["options_disciplinas"] = $this->Disciplina_Model->selectDisciplinas();
 		/* =====================================================================================================================*/
-		$this->db->select('*');													  					// select tudo
-		$this->db->from('notas_disciplina');												 		// da tbl matricula
-		$this->db->where("anolectivo_id", $anolectivo);												// filtro - ano-lectivo
-		$this->db->where("turma_id", $turma);														// filtro - turma
-		$this->db->where("disciplina_id", $disciplina);												// filtro - disciplina
-		$this->db->join('turma', 'turma.id_turma = notas_disciplina.turma_id');						// join turma e matricula
-		$this->db->join('classe', 'classe.id_classe  = turma.classe_id');							// Join tbl classe [turma]
-		$this->db->join('anolectivo', 'anolectivo.id_ano = notas_disciplina.anolectivo_id');		// join ano lectivo e matricula
+		$this->db->select('*');	// select tudo
+		$this->db->from('notas_disciplina'); // da tbl matricula
+		$this->db->where("anolectivo_id", $anolectivo); // filtro - ano-lectivo
+		$this->db->where("turma_id", $turma); // filtro - turma
+		$this->db->where("disciplina_id", $disciplina); // filtro - disciplina
+		$this->db->join('turma', 'turma.id_turma = notas_disciplina.turma_id'); // join turma e matricula
+		$this->db->join('classe', 'classe.id_classe  = turma.classe_id'); // Join tbl classe [turma]
+		$this->db->join('anolectivo', 'anolectivo.id_ano = notas_disciplina.anolectivo_id'); // join ano lectivo e matricula
 		$this->db->join('disciplina', 'disciplina.id_disciplina = notas_disciplina.disciplina_id');	// join ano lectivo e matricula
-		$this->db->join('periodo', 'periodo.id_periodo = turma.periodo_id');						// join periodo e turma
-		$dados["listagem_alunos"] = $this->db->get()->row();										// retorna 1 linha
+		$this->db->join('periodo', 'periodo.id_periodo = turma.periodo_id'); // join periodo e turma
+		$dados["listagem_alunos"] = $this->db->get()->row(); // retorna 1 linha
 		/* =====================================================================================================================*/
-		$this->db->select('*');																		// select tudo
-		$this->db->from('notas_disciplina');														// da tbl matricula
-		$this->db->where("anolectivo_id", $anolectivo);												// filtro - anolectivo
-		$this->db->where("turma_id", $turma);														// filtro - turma
-		$this->db->where("disciplina_id", $disciplina);												// filtro - disciplina
-		$this->db->order_by("nome", "asc");  														// Ordenar a travez do nome
-		$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id');		 				// Join aluno e matricula
-		$this->db->join('anolectivo', 'anolectivo.id_ano = notas_disciplina.anolectivo_id'); 		// Join anolectivo e matricula
-		$this->db->join('turma', 'turma.id_turma = notas_disciplina.turma_id');		 				// Join turma e matricula
-		$this->db->join('classe', 'classe.id_classe  = turma.classe_id');							// Join tbl classe [turma]
-		$dados['alunos'] = $this->db->get()->result();												// retorna várias linhas
+		$this->db->select('*'); // select tudo
+		$this->db->from('notas_disciplina'); // da tbl matricula
+		$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
+		$this->db->where("turma_id", $turma); // filtro - turma
+		$this->db->where("disciplina_id", $disciplina); // filtro - disciplina
+		$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
+		$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id'); // Join aluno e matricula
+		$this->db->join('anolectivo', 'anolectivo.id_ano = notas_disciplina.anolectivo_id'); // Join anolectivo e matricula
+		$this->db->join('turma', 'turma.id_turma = notas_disciplina.turma_id'); // Join turma e matricula
+		$this->db->join('classe', 'classe.id_classe  = turma.classe_id'); // Join tbl classe [turma]
+		$dados['alunos'] = $this->db->get()->result(); // retorna várias linhas
 		/* =====================================================================================================================*/
 		if ($classe == 41) 
 		{

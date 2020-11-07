@@ -28,65 +28,66 @@ class Pauta_xls_00 extends CI_Controller
 			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
 			$dados['alunos'] = $this->db->get()->result(); // retorna várias linhas
 			/* ----------------------------------------------------------------------------------------------------------- */
-			$this->db->select('*'); // seleciona tudo
-			$this->db->from('notas_disciplina'); // de notas disciplina
-			$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
-			$this->db->where("turma_id", $turma); // filtro - turma
-			$this->db->where("disciplina_id", '28'); // filtro - turma
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left'); // join turma e matricula
-			$this->db->group_by('notas_disciplina.aluno_id'); // agrupamento
-			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
-			$dados['l_portuguesa'] = $this->db->get()->result(); // retorna várias linhas
-			/* ----------------------------------------------------------------------------------------------------------- */
-			$this->db->select('*');	// seleciona tudo
-			$this->db->from('notas_disciplina'); // de notas disciplina
-			$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
-			$this->db->where("turma_id", $turma); // filtro - turma
-			$this->db->where("disciplina_id", '29'); // filtro - turma
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left'); // join turma e matricula
-			$this->db->group_by('notas_disciplina.aluno_id'); // agrupamento
-			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
-			$dados['matematica'] = $this->db->get()->result(); // retorna várias linhas
-			/* ----------------------------------------------------------------------------------------------------------- */
-			$this->db->select('*');// seleciona tudo
-			$this->db->from('notas_disciplina'); // de notas disciplina
-			$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
-			$this->db->where("turma_id", $turma); // filtro - turma
-			$this->db->where("disciplina_id", '30'); // filtro - turma
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left'); // join turma e matricula
-			$this->db->group_by('notas_disciplina.aluno_id');// agrupamento
-			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
-			$dados['estudo_meio'] = $this->db->get()->result(); // retorna várias linhas
-			/* ----------------------------------------------------------------------------------------------------------- */
-			$this->db->select('*');// seleciona tudo
-			$this->db->from('notas_disciplina'); // de notas disciplina
-			$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
-			$this->db->where("turma_id", $turma); // filtro - turma
-			$this->db->where("disciplina_id", '31'); // filtro - turma
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left'); // join turma e matricula
-			$this->db->group_by('notas_disciplina.aluno_id');// agrupamento
-			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
-			$dados['ed_musical'] = $this->db->get()->result(); // retorna várias linhas
-			/* ----------------------------------------------------------------------------------------------------------- */
-			$this->db->select('*');// seleciona tudo
-			$this->db->from('notas_disciplina'); // de notas disciplina
-			$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
-			$this->db->where("turma_id", $turma); // filtro - turma
-			$this->db->where("disciplina_id", '32'); // filtro - turma
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left'); // join turma e matricula
-			$this->db->group_by('notas_disciplina.aluno_id');// agrupamento
-			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
-			$dados['ed_fisica'] = $this->db->get()->result(); // na várias linhas
-			/* ----------------------------------------------------------------------------------------------------------- */
-			$this->db->select('*');// seleciona tudo
-			$this->db->from('notas_disciplina'); // de notas disciplina
-			$this->db->where("anolectivo_id", $anolectivo); // filtro - anolectivo
-			$this->db->where("turma_id", $turma); // filtro - turma
-			$this->db->where("disciplina_id", '33'); // filtro - turma
-			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left'); // join turma e matricula
-			$this->db->group_by('notas_disciplina.aluno_id');// agrupamento
-			$this->db->order_by("nome", "asc"); // Ordenar a travez do nome
-			$dados['ed_plastica'] = $this->db->get()->result(); // retorna várias linhas
+				/*--------------------------------------------------------------------------------------------------------------------------------*/
+				$this->db->select('*');																				// seleciona tudo
+				$this->db->from('notas_disciplina');																// de notas disciplina
+				$this->db->where("anolectivo_id", $anolectivo);														// filtro - anolectivo
+				$this->db->where("turma_id", $turma);																// filtro - turma
+				$this->db->where("disciplina_id", '22');															// filtro - turma
+				$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left');						// join turma e matricula
+				$this->db->group_by('notas_disciplina.aluno_id');													// agrupamento
+				$this->db->order_by("nome", "asc");  												 				// Ordenar a travez do nome
+				$dados['representacao_matematica'] = $this->db->get()->result();									// retorna várias linhas
+				/*--------------------------------------------------------------------------------------------------------------------------------*/
+				$this->db->select('*');																				// seleciona tudo
+				$this->db->from('notas_disciplina');																// de notas disciplina
+				$this->db->where("anolectivo_id", $anolectivo);														// filtro - anolectivo
+				$this->db->where("turma_id", $turma);																// filtro - turma
+				$this->db->where("disciplina_id", '23');															// filtro - turma
+				$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left');						// join turma e matricula
+				$this->db->group_by('notas_disciplina.aluno_id');													// agrupamento
+				$this->db->order_by("nome", "asc");  												 				// Ordenar a travez do nome
+				$dados['C_Ling_Literatura_Infant'] = $this->db->get()->result();									// retorna várias linhas
+				/*--------------------------------------------------------------------------------------------------------------------------------*/
+				$this->db->select('*');																				// seleciona tudo
+				$this->db->from('notas_disciplina');																// de notas disciplina
+				$this->db->where("anolectivo_id", $anolectivo);														// filtro - anolectivo
+				$this->db->where("turma_id", $turma);																// filtro - turma
+				$this->db->where("disciplina_id", '24');															// filtro - turma
+				$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left');						// join turma e matricula
+				$this->db->group_by('notas_disciplina.aluno_id');													// agrupamento
+				$this->db->order_by("nome", "asc");  												 				// Ordenar a travez do nome
+				$dados['Meio_Fisico_Social'] = $this->db->get()->result();											// retorna várias linhas
+				/*--------------------------------------------------------------------------------------------------------------------------------*/
+				$this->db->select('*');																				// seleciona tudo
+				$this->db->from('notas_disciplina');																// de notas disciplina
+				$this->db->where("anolectivo_id", $anolectivo);														// filtro - anolectivo
+				$this->db->where("turma_id", $turma);																// filtro - turma
+				$this->db->where("disciplina_id", '25');															// filtro - turma
+				$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left');						// join turma e matricula
+				$this->db->group_by('notas_disciplina.aluno_id');													// agrupamento
+				$this->db->order_by("nome", "asc");  												 				// Ordenar a travez do nome
+				$dados['Exp_Manuarep_matlastica'] = $this->db->get()->result();											// retorna várias linhas
+				/*--------------------------------------------------------------------------------------------------------------------------------*/
+				$this->db->select('*');																				// seleciona tudo
+				$this->db->from('notas_disciplina');																// de notas disciplina
+				$this->db->where("anolectivo_id", $anolectivo);														// filtro - anolectivo
+				$this->db->where("turma_id", $turma);																// filtro - turma
+				$this->db->where("disciplina_id", '26');															// filtro - turma
+				$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left');						// join turma e matricula
+				$this->db->group_by('notas_disciplina.aluno_id');													// agrupamento
+				$this->db->order_by("nome", "asc");  												 				// Ordenar a travez do nome
+				$dados['Exp_Musical'] = $this->db->get()->result();													// retorna várias linhas
+				/*--------------------------------------------------------------------------------------------------------------------------------*/
+				$this->db->select('*');																				// seleciona tudo
+				$this->db->from('notas_disciplina');																// de notas disciplina
+				$this->db->where("anolectivo_id", $anolectivo);														// filtro - anolectivo
+				$this->db->where("turma_id", $turma);																// filtro - turma
+				$this->db->where("disciplina_id", '27');															// filtro - turma
+				$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id', 'left');						// join turma e matricula
+				$this->db->group_by('notas_disciplina.aluno_id');													// agrupamento
+				$this->db->order_by("nome", "asc");  												 				// Ordenar a travez do nome
+				$dados['Psicomotricidade'] = $this->db->get()->result();											// retorna várias linhas
 		/* =========================================================================================================== */
 			$spreadsheet = new Spreadsheet();
 			$sheet = $spreadsheet->getActiveSheet();
@@ -107,32 +108,32 @@ class Pauta_xls_00 extends CI_Controller
 			$sheet->setCellValue('C10', 'NOME COMPLETO');
 			$sheet->setCellValue('D10', 'GÉNERO');
 			/* ----------------------------------------------------------------------------------------------------------- */
-			$sheet->setCellValue('E10', 'L. PORTUGUESA');
+			$sheet->setCellValue('E10', 'REP. MATEMÁTICA');
 			$sheet->setCellValue('E11', 'CAP');
 			$sheet->setCellValue('F11', 'CPE');
 			$sheet->setCellValue('G11', 'CF');
 			/* ----------------------------------------------------------------------------------------------------------- */
-			$sheet->setCellValue('H10', 'MATEMÁTICA');
+			$sheet->setCellValue('H10', 'C. LING. E LIT. INF.');
 			$sheet->setCellValue('H11', 'CAP');
 			$sheet->setCellValue('I11', 'CPE');
 			$sheet->setCellValue('J11', 'CF');
 			/* ----------------------------------------------------------------------------------------------------------- */
-			$sheet->setCellValue('K10', 'EST. DO MEIO');
+			$sheet->setCellValue('K10', 'M. F. E SOCIAL');
 			$sheet->setCellValue('K11', 'CAP');
 			$sheet->setCellValue('L11', 'CPE');
 			$sheet->setCellValue('M11', 'CF');
 			/* ----------------------------------------------------------------------------------------------------------- */
-			$sheet->setCellValue('N10', 'ED. MUSICAL');
+			$sheet->setCellValue('N10', 'EXP. MAN. PLÁST.');
 			$sheet->setCellValue('N11', 'CAP');
 			$sheet->setCellValue('O11', 'CPE');
 			$sheet->setCellValue('P11', 'CF');
 			/* ----------------------------------------------------------------------------------------------------------- */
-			$sheet->setCellValue('Q10', 'ED. FISÍCA');
+			$sheet->setCellValue('Q10', 'EXP. MUSICAL');
 			$sheet->setCellValue('Q11', 'CAP');
 			$sheet->setCellValue('R11', 'CPE');
 			$sheet->setCellValue('S11', 'CF');
 			/* ----------------------------------------------------------------------------------------------------------- */
-			$sheet->setCellValue('T10', 'E. M. P.');
+			$sheet->setCellValue('T10', 'PSICOMOTRICIDADE');
 			$sheet->setCellValue('T11', 'CAP');
 			$sheet->setCellValue('U11', 'CPE');
 			$sheet->setCellValue('V11', 'CF');
@@ -193,77 +194,77 @@ class Pauta_xls_00 extends CI_Controller
 			/* ----------------------------------------------------------------------------------------------------------- */
 		$row = 12;
 		$i = 1;
-		foreach($dados['l_portuguesa'] as $l_p)
+		foreach($dados['representacao_matematica'] as $rep_mat)
 		{
-			$cap = (($l_p->ct_1 + $l_p->ct_2 + $l_p->ct_3)/3);
-			$cf = ((0.4*$cap)+(0.6*$l_p->ce));
+			$cap = (($rep_mat->ct_1 + $rep_mat->ct_2 + $rep_mat->ct_3)/3);
+			$cf = ((0.4*$cap)+(0.6*$rep_mat->ce));
 			/* --------------------------------------------------- */
 			$sheet->setCellValue('E'.$row, number_format($cap));
-			$sheet->setCellValue('F'.$row, number_format($l_p->ce));
+			$sheet->setCellValue('F'.$row, number_format($rep_mat->ce));
 			$sheet->setCellValue('G'.$row, number_format($cf));
 			$i++;
 			$row++;
 		}
 		$row = 12;
 		$i = 1;
-		foreach($dados['matematica'] as $mat)
+		foreach($dados['C_Ling_Literatura_Infant'] as $clli)
 		{
-			$cap = (($mat->ct_1 + $mat->ct_2 + $mat->ct_3)/3);
-			$cf = ((0.4*$cap)+(0.6*$mat->ce));
+			$cap = (($clli->ct_1 + $clli->ct_2 + $clli->ct_3)/3);
+			$cf = ((0.4*$cap)+(0.6*$clli->ce));
 			/* --------------------------------------------------- */
 			$sheet->setCellValue('H'.$row, number_format($cap));
-			$sheet->setCellValue('I'.$row, number_format($mat->ce));
+			$sheet->setCellValue('I'.$row, number_format($clli->ce));
 			$sheet->setCellValue('J'.$row, number_format($cf));
 			$i++;
 			$row++;
 		}
 		$row = 12;
 		$i = 1;
-		foreach($dados['estudo_meio'] as $est_meio)
+		foreach($dados['Meio_Fisico_Social'] as $mfs)
 		{
-			$cap = (($est_meio->ct_1 + $est_meio->ct_2 + $est_meio->ct_3)/3);
-			$cf = ((0.4*$cap)+(0.6*$est_meio->ce));
+			$cap = (($mfs->ct_1 + $mfs->ct_2 + $mfs->ct_3)/3);
+			$cf = ((0.4*$cap)+(0.6*$mfs->ce));
 			/* --------------------------------------------------- */
 			$sheet->setCellValue('K'.$row, number_format($cap));
-			$sheet->setCellValue('L'.$row, number_format($est_meio->ce));
+			$sheet->setCellValue('L'.$row, number_format($mfs->ce));
 			$sheet->setCellValue('M'.$row, number_format($cf));
 			$i++;
 			$row++;
 		}
 		$row = 12;
 		$i = 1;
-		foreach($dados['ed_musical'] as $ed_music)
+		foreach($dados['Exp_Manual_Plastica'] as $emp)
 		{
-			$cap = (($ed_music->ct_1 + $ed_music->ct_2 + $ed_music->ct_3)/3);
-			$cf = ((0.4*$cap)+(0.6*$ed_music->ce));
+			$cap = (($emp->ct_1 + $emp->ct_2 + $emp->ct_3)/3);
+			$cf = ((0.4*$cap)+(0.6*$emp->ce));
 			/* --------------------------------------------------- */
 			$sheet->setCellValue('N'.$row, number_format($cap));
-			$sheet->setCellValue('O'.$row, number_format($ed_music->ce));
+			$sheet->setCellValue('O'.$row, number_format($emp->ce));
 			$sheet->setCellValue('P'.$row, number_format($cf));
 			$i++;
 			$row++;
 		}
 		$row = 12;
 		$i = 1;
-		foreach($dados['ed_fisica'] as $ed_fisc)
+		foreach($dados['Exp_Musical'] as $exp_muisc)
 		{
-			$cap = (($ed_fisc->ct_1 + $ed_fisc->ct_2 + $ed_fisc->ct_3)/3);
-			$cf = ((0.4*$cap)+(0.6*$ed_fisc->ce));
+			$cap = (($exp_muisc->ct_1 + $exp_muisc->ct_2 + $exp_muisc->ct_3)/3);
+			$cf = ((0.4*$cap)+(0.6*$exp_muisc->ce));
 			/* --------------------------------------------------- */
 			$sheet->setCellValue('Q'.$row, number_format($cap));
-			$sheet->setCellValue('R'.$row, number_format($ed_fisc->ce));
+			$sheet->setCellValue('R'.$row, number_format($exp_muisc->ce));
 			$sheet->setCellValue('S'.$row, number_format($cf));
 			$i++;
 			$row++;
 		}
 		$row = 12;
 		$i = 1;
-		foreach($dados['ed_plastica'] as $ed_plstic){
-			$cap = (($ed_plstic->ct_1 + $ed_plstic->ct_2 + $ed_plstic->ct_3)/3);
-			$cf = ((0.4*$cap)+(0.6*$ed_plstic->ce));
+		foreach($dados['Psicomotricidade'] as $piscomotri){
+			$cap = (($piscomotri->ct_1 + $piscomotri->ct_2 + $piscomotri->ct_3)/3);
+			$cf = ((0.4*$cap)+(0.6*$piscomotri->ce));
 			/* --------------------------------------------------- */
 			$sheet->setCellValue('T'.$row, number_format($cap));
-			$sheet->setCellValue('U'.$row, number_format($ed_plstic->ce));
+			$sheet->setCellValue('U'.$row, number_format($piscomotri->ce));
 			$sheet->setCellValue('V'.$row, number_format($cf));
 			/*------------------------------------------------------------------------------------------------------------------*/
 			$sheet->setCellValue('W'.$row, '=IF(AND(G'.$row.'>=5, J'.$row.'>=5, M'.$row.'>=5, P'.$row.'>=5, S'.$row.'>=5, V'.$row.'>=5), "Aprovado", IF(AND(G'.$row.'>=5, J'.$row.'>=5, M'.$row.'<5, P'.$row.'<5, S'.$row.'>=5, V'.$row.'>=5), "Aprovado", IF(AND(G'.$row.'>=5, J'.$row.'>=5, M'.$row.'<5, P'.$row.'>=5, S'.$row.'<5, V'.$row.'>=5), "Aprovado", IF(AND(G'.$row.'>=5, J'.$row.'>=5, M'.$row.'<5, P'.$row.'>=5, S'.$row.'>=5, V'.$row.'<5), "Aprovado", IF(AND(G'.$row.'>=5, J'.$row.'>=5, M'.$row.'>=5, P'.$row.'<5, S'.$row.'<5, V'.$row.'>=5), "Aprovado", IF(AND(G'.$row.'>=5, J'.$row.'>=5, M'.$row.'>=5, P'.$row.'<5, S'.$row.'>=5, V'.$row.'<5), "Aprovado", IF(AND(G'.$row.'>=5, J'.$row.'>=5, M'.$row.'>=5, P'.$row.'>=5, S'.$row.'<5, V'.$row.'<5), "Aprovado", IF(AND(G'.$row.'>=5, J'.$row.'>=5, M'.$row.'<5, P'.$row.'>=5, S'.$row.'>=5, V'.$row.'>=5), "Aprovado", IF(AND(G'.$row.'>=5, J'.$row.'>=5, M'.$row.'>=5, P'.$row.'<5, S'.$row.'>=5, V'.$row.'>=5), "Aprovado", IF(AND(G'.$row.'>=5, J'.$row.'>=5, M'.$row.'>=5, P'.$row.'>=5, S'.$row.'<5, V'.$row.'>=5), "Aprovado", IF(AND(G'.$row.'>=5, J'.$row.'>=5, M'.$row.'>=5, P'.$row.'>=5, S'.$row.'>=5, V'.$row.'<5), "Aprovado", "Reprovado" )))))))))))');

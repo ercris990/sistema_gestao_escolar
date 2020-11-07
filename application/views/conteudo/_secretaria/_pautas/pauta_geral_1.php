@@ -66,26 +66,26 @@
             <tr>
               <!-- CAP -->
               <td class="text-center"><?php 
-                                $cap = (($l_p->ct_1 + $l_p->ct_2 + $l_p->ct_3)/3);
-                                /* -------------------------------------- */
-                                if ($cap == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($cap,1) >= 0) && (number_format($cap,1) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($cap,1).'</span>';
-                                } elseif ((number_format($cap,1) >= 5) && (number_format($cap,1) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($cap,1).'</span>';
-                                }
-                            ?></td>
+									$cap = (($l_p->ct_1 + $l_p->ct_2 + $l_p->ct_3)/3);
+									/* -------------------------------------- */
+									if ($cap == ""){
+											echo '<span style="color: red;"> - </span>';
+									} elseif ((number_format($cap,1) >= 0) && (number_format($cap,1) < 5)) {
+											echo '<span style="color: red;">'.number_format($cap,1).'</span>';
+									} elseif ((number_format($cap,1) >= 5) && (number_format($cap,1) <= 10)) {
+											echo '<span style="color: black;">'.number_format($cap,1).'</span>';
+									}
+							?></td>
               <!-- CE -->
               <td class="text-center"><?php
-                                if ($l_p->ce == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($l_p->ce,1) >= 0) && (number_format($l_p->ce,1) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($l_p->ce,1).'</span>';
-                                } elseif ((number_format($l_p->ce,1) >= 5) && (number_format($l_p->ce,1) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($l_p->ce,1).'</span>';
-                                }
-                            ?></td>
+									if ($l_p->ce == ""){
+											echo '<span style="color: red;"> - </span>';
+									} elseif ((number_format($l_p->ce,1) >= 0) && (number_format($l_p->ce,1) < 5)) {
+											echo '<span style="color: red;">'.number_format($l_p->ce,1).'</span>';
+									} elseif ((number_format($l_p->ce,1) >= 5) && (number_format($l_p->ce,1) <= 10)) {
+											echo '<span style="color: black;">'.number_format($l_p->ce,1).'</span>';
+									}
+							?></td>
               <!-- CF -->
               <td class="text-center"><?php
 										/* -------------------------------------- */
@@ -122,39 +122,39 @@
             <tr>
               <!-- CAP -->
               <td class="text-center"><?php 
-                                $cap = (($mat->ct_1 + $mat->ct_2 + $mat->ct_3)/3);
-                                /* -------------------------------------- */
-                                if ($cap == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($cap,1) >= 0) && (number_format($cap,1) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($cap,1).'</span>';
-                                } elseif ((number_format($cap,1) >= 5) && (number_format($cap,1) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($cap,1).'</span>';
-                                }
-                            ?></td>
+								$cap = (($mat->ct_1 + $mat->ct_2 + $mat->ct_3)/3);
+								/* -------------------------------------- */
+								if ($cap == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($cap,1) >= 0) && (number_format($cap,1) < 5)) {
+										echo '<span style="color: red;">'.number_format($cap,1).'</span>';
+								} elseif ((number_format($cap,1) >= 5) && (number_format($cap,1) <= 10)) {
+										echo '<span style="color: black;">'.number_format($cap,1).'</span>';
+								}
+						?></td>
               <!-- CE -->
               <td class="text-center"><?php
-                                if ($mat->ce == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($mat->ce,1) >= 0) && (number_format($mat->ce,1) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($mat->ce,1).'</span>';
-                                } elseif ((number_format($mat->ce,1) >= 5) && (number_format($mat->ce,1) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($mat->ce, 1).'</span>';
-                                }
-                            ?></td>
+								if ($mat->ce == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($mat->ce,1) >= 0) && (number_format($mat->ce,1) < 5)) {
+										echo '<span style="color: red;">'.number_format($mat->ce,1).'</span>';
+								} elseif ((number_format($mat->ce,1) >= 5) && (number_format($mat->ce,1) <= 10)) {
+										echo '<span style="color: black;">'.number_format($mat->ce, 1).'</span>';
+								}
+						?></td>
               <!-- CF -->
               <td class="text-center"><?php
-                                $cap = (($mat->ct_1 + $mat->ct_2 + $mat->ct_3)/3);
-                                $cf = ((0.4 * $cap) + (0.6 * $mat->ce));
-                                /* -------------------------------------- */
-                                if ($cf == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($cf) >= 0) && (number_format($cf) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($cf).'</span>';
-                                } elseif ((number_format($cf) >= 5) && (number_format($cf) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($cf).'</span>';
-                                }
-                            ?></td>
+								$cap = (($mat->ct_1 + $mat->ct_2 + $mat->ct_3)/3);
+								$cf = ((0.4 * $cap) + (0.6 * $mat->ce));
+								/* -------------------------------------- */
+								if ($cf == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($cf) >= 0) && (number_format($cf) < 5)) {
+										echo '<span style="color: red;">'.number_format($cf).'</span>';
+								} elseif ((number_format($cf) >= 5) && (number_format($cf) <= 10)) {
+										echo '<span style="color: black;">'.number_format($cf).'</span>';
+								}
+						?></td>
             </tr>
             <?php endforeach ?>
           </tbody>
@@ -177,39 +177,39 @@
             <tr>
               <!-- CAP -->
               <td class="text-center"><?php
-                                $cap = (($e_meio->ct_1 + $e_meio->ct_2 + $e_meio->ct_3)/3);
-                                /* -------------------------------------- */
-                                if ($cap == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($cap,1) >= 0) && (number_format($cap,1) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($cap,1).'</span>';
-                                } elseif ((number_format($cap,1) >= 5) && (number_format($cap,1) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($cap,1).'</span>';
-                                }
-                            ?></td>
+								$cap = (($e_meio->ct_1 + $e_meio->ct_2 + $e_meio->ct_3)/3);
+								/* -------------------------------------- */
+								if ($cap == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($cap,1) >= 0) && (number_format($cap,1) < 5)) {
+										echo '<span style="color: red;">'.number_format($cap,1).'</span>';
+								} elseif ((number_format($cap,1) >= 5) && (number_format($cap,1) <= 10)) {
+										echo '<span style="color: black;">'.number_format($cap,1).'</span>';
+								}
+						?></td>
               <!-- CE -->
               <td class="text-center"><?php
-                                if ($e_meio->ce == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($e_meio->ce,1) >= 0) && (number_format($e_meio->ce,1) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($e_meio->ce, 1).'</span>';
-                                } elseif ((number_format($e_meio->ce,1) >= 5) && (number_format($e_meio->ce,1) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($e_meio->ce, 1).'</span>';
-                                }
-                            ?></td>
+								if ($e_meio->ce == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($e_meio->ce,1) >= 0) && (number_format($e_meio->ce,1) < 5)) {
+										echo '<span style="color: red;">'.number_format($e_meio->ce, 1).'</span>';
+								} elseif ((number_format($e_meio->ce,1) >= 5) && (number_format($e_meio->ce,1) <= 10)) {
+										echo '<span style="color: black;">'.number_format($e_meio->ce, 1).'</span>';
+								}
+						?></td>
               <!-- CF -->
               <td class="text-center"><?php
-                                $cap = (($e_meio->ct_1 + $e_meio->ct_2 + $e_meio->ct_3)/3);
-                                $cf = ((0.4 * $cap) + (0.6 * $e_meio->ce));
-                                /* -------------------------------------- */
-                                if ($cf == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($cf) >= 0) && (number_format($cf) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($cf).'</span>';
-                                } elseif ((number_format($cf) >= 5) && (number_format($cf) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($cf).'</span>';
-                                }
-                            ?></td>
+								$cap = (($e_meio->ct_1 + $e_meio->ct_2 + $e_meio->ct_3)/3);
+								$cf = ((0.4 * $cap) + (0.6 * $e_meio->ce));
+								/* -------------------------------------- */
+								if ($cf == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($cf) >= 0) && (number_format($cf) < 5)) {
+										echo '<span style="color: red;">'.number_format($cf).'</span>';
+								} elseif ((number_format($cf) >= 5) && (number_format($cf) <= 10)) {
+										echo '<span style="color: black;">'.number_format($cf).'</span>';
+								}
+						?></td>
             </tr>
             <?php endforeach ?>
           </tbody>
@@ -232,39 +232,39 @@
             <tr>
               <!-- CAP -->
               <td class="text-center"><?php
-                                $cap = (($e_m->ct_1 + $e_m->ct_2 + $e_m->ct_3)/3);
-                                /* -------------------------------------- */
-                                if ($cap == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($cap,1) >= 0) && (number_format($cap,1) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($cap,1).'</span>';
-                                } elseif ((number_format($cap,1) >= 5) && (number_format($cap,1) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($cap,1).'</span>';
-                                }
-                            ?></td>
+								$cap = (($e_m->ct_1 + $e_m->ct_2 + $e_m->ct_3)/3);
+								/* -------------------------------------- */
+								if ($cap == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($cap,1) >= 0) && (number_format($cap,1) < 5)) {
+										echo '<span style="color: red;">'.number_format($cap,1).'</span>';
+								} elseif ((number_format($cap,1) >= 5) && (number_format($cap,1) <= 10)) {
+										echo '<span style="color: black;">'.number_format($cap,1).'</span>';
+								}
+						?></td>
               <!-- CE -->
               <td class="text-center"><?php
-                                if ($e_m->ce == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($e_m->ce,1)>= 0) && (number_format($e_m->ce,1)< 5)) {
-                                    echo '<span style="color: red;">'.number_format($e_m->ce,1).'</span>';
-                                } elseif ((number_format($e_m->ce,1)>= 5) && (number_format($e_m->ce,1)<= 10)) {
-                                    echo '<span style="color: black;">'.number_format($e_m->ce,1).'</span>';
-                                }
-                            ?></td>
+								if ($e_m->ce == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($e_m->ce,1)>= 0) && (number_format($e_m->ce,1)< 5)) {
+										echo '<span style="color: red;">'.number_format($e_m->ce,1).'</span>';
+								} elseif ((number_format($e_m->ce,1)>= 5) && (number_format($e_m->ce,1)<= 10)) {
+										echo '<span style="color: black;">'.number_format($e_m->ce,1).'</span>';
+								}
+						?></td>
               <!-- CF -->
               <td class="text-center"><?php
-                                $cap = (($e_m->ct_1 + $e_m->ct_2 + $e_m->ct_3)/3);
-                                $cf = ((0.4 * $cap) + (0.6 * $e_m->ce));
-                                /* -------------------------------------- */
-                                if ($cf == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($cf) >= 0) && (number_format($cf) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($cf).'</span>';
-                                } elseif ((number_format($cf) >= 5) && (number_format($cf) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($cf).'</span>';
-                                }
-                            ?></td>
+								$cap = (($e_m->ct_1 + $e_m->ct_2 + $e_m->ct_3)/3);
+								$cf = ((0.4 * $cap) + (0.6 * $e_m->ce));
+								/* -------------------------------------- */
+								if ($cf == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($cf) >= 0) && (number_format($cf) < 5)) {
+										echo '<span style="color: red;">'.number_format($cf).'</span>';
+								} elseif ((number_format($cf) >= 5) && (number_format($cf) <= 10)) {
+										echo '<span style="color: black;">'.number_format($cf).'</span>';
+								}
+						?></td>
             </tr>
             <?php endforeach ?>
           </tbody>
@@ -287,39 +287,39 @@
             <tr>
               <!-- CAP -->
               <td class="text-center"><?php
-                                $cap = (($e_f->ct_1 + $e_f->ct_2 + $e_f->ct_3)/3);
-                                /* -------------------------------------- */
-                                if ($cap == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($cap,1) >= 0) && (number_format($cap,1) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($cap,1).'</span>';
-                                } elseif ((number_format($cap,1) >= 5) && (number_format($cap,1) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($cap,1).'</span>';
-                                }
-                            ?></td>
+								$cap = (($e_f->ct_1 + $e_f->ct_2 + $e_f->ct_3)/3);
+								/* -------------------------------------- */
+								if ($cap == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($cap,1) >= 0) && (number_format($cap,1) < 5)) {
+										echo '<span style="color: red;">'.number_format($cap,1).'</span>';
+								} elseif ((number_format($cap,1) >= 5) && (number_format($cap,1) <= 10)) {
+										echo '<span style="color: black;">'.number_format($cap,1).'</span>';
+								}
+						?></td>
               <!-- CE -->
               <td class="text-center"><?php
-                                if ($e_f->ce == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($e_f->ce,1) >= 0) && (number_format($e_f->ce,1) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($e_f->ce,1).'</span>';
-                                } elseif ((number_format($e_f->ce,1) >= 5) && (number_format($e_f->ce,1) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($e_f->ce,1).'</span>';
-                                }
-                            ?></td>
+								if ($e_f->ce == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($e_f->ce,1) >= 0) && (number_format($e_f->ce,1) < 5)) {
+										echo '<span style="color: red;">'.number_format($e_f->ce,1).'</span>';
+								} elseif ((number_format($e_f->ce,1) >= 5) && (number_format($e_f->ce,1) <= 10)) {
+										echo '<span style="color: black;">'.number_format($e_f->ce,1).'</span>';
+								}
+						?></td>
               <!-- CF -->
               <td class="text-center"><?php
-                                $cap = (($e_f->ct_1 + $e_f->ct_2 + $e_f->ct_3)/3);
-                                $cf = ((0.4 * $cap) + (0.6 * $e_f->ce));
-                                /* -------------------------------------- */
-                                if ($cf == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($cf)>= 0) && (number_format($cf)< 5)) {
-                                    echo '<span style="color: red;">'.number_format($cf).'</span>';
-                                } elseif ((number_format($cf)>= 5) && (number_format($cf)<= 10)) {
-                                    echo '<span style="color: black;">'.number_format($cf).'</span>';
-                                }
-                            ?></td>
+								$cap = (($e_f->ct_1 + $e_f->ct_2 + $e_f->ct_3)/3);
+								$cf = ((0.4 * $cap) + (0.6 * $e_f->ce));
+								/* -------------------------------------- */
+								if ($cf == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($cf)>= 0) && (number_format($cf)< 5)) {
+										echo '<span style="color: red;">'.number_format($cf).'</span>';
+								} elseif ((number_format($cf)>= 5) && (number_format($cf)<= 10)) {
+										echo '<span style="color: black;">'.number_format($cf).'</span>';
+								}
+						?></td>
             </tr>
             <?php endforeach ?>
           </tbody>
@@ -342,39 +342,39 @@
             <tr>
               <!-- CAP -->
               <td class="text-center"><?php
-                                $cap = (($emp->ct_1 + $emp->ct_2 + $emp->ct_3)/3);
-                                /* -------------------------------------- */
-                                if ($cap == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($cap,1) >= 0) && (number_format($cap,1) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($cap,1).'</span>';
-                                } elseif ((number_format($cap,1) >= 5) && (number_format($cap,1) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($cap,1).'</span>';
-                                }
-                            ?></td>
+								$cap = (($emp->ct_1 + $emp->ct_2 + $emp->ct_3)/3);
+								/* -------------------------------------- */
+								if ($cap == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($cap,1) >= 0) && (number_format($cap,1) < 5)) {
+										echo '<span style="color: red;">'.number_format($cap,1).'</span>';
+								} elseif ((number_format($cap,1) >= 5) && (number_format($cap,1) <= 10)) {
+										echo '<span style="color: black;">'.number_format($cap,1).'</span>';
+								}
+						?></td>
               <!-- CE -->
               <td class="text-center"><?php
-                                if ($emp->ce == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($emp->ce,1) >= 0) && (number_format($emp->ce,1) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($emp->ce,1).'</span>';
-                                } elseif ((number_format($emp->ce,1) >= 5) && (number_format($emp->ce,1) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($emp->ce,1).'</span>';
-                                }
-                            ?></td>
+								if ($emp->ce == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($emp->ce,1) >= 0) && (number_format($emp->ce,1) < 5)) {
+										echo '<span style="color: red;">'.number_format($emp->ce,1).'</span>';
+								} elseif ((number_format($emp->ce,1) >= 5) && (number_format($emp->ce,1) <= 10)) {
+										echo '<span style="color: black;">'.number_format($emp->ce,1).'</span>';
+								}
+						?></td>
               <!-- CF -->
               <td class="text-center"><?php
-                                $cap = (($emp->ct_1 + $emp->ct_2 + $emp->ct_3)/3);
-                                $cf = ((0.4 * $cap) + (0.6 * $emp->ce));
-                                /* -------------------------------------- */
-                                if ($cf == ""){
-                                    echo '<span style="color: red;"> - </span>';
-                                } elseif ((number_format($cf) >= 0) && (number_format($cf) < 5)) {
-                                    echo '<span style="color: red;">'.number_format($cf).'</span>';
-                                } elseif ((number_format($cf) >= 5) && (number_format($cf) <= 10)) {
-                                    echo '<span style="color: black;">'.number_format($cf).'</span>';
-                                }
-                            ?></td>
+								$cap = (($emp->ct_1 + $emp->ct_2 + $emp->ct_3)/3);
+								$cf = ((0.4 * $cap) + (0.6 * $emp->ce));
+								/* -------------------------------------- */
+								if ($cf == ""){
+										echo '<span style="color: red;"> - </span>';
+								} elseif ((number_format($cf) >= 0) && (number_format($cf) < 5)) {
+										echo '<span style="color: red;">'.number_format($cf).'</span>';
+								} elseif ((number_format($cf) >= 5) && (number_format($cf) <= 10)) {
+										echo '<span style="color: black;">'.number_format($cf).'</span>';
+								}
+						?></td>
             </tr>
             <?php endforeach ?>
           </tbody>
