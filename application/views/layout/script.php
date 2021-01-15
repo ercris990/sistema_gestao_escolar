@@ -144,12 +144,34 @@ function validadata_aluno() {
     return false;
   }
   /* ==============  ============== */
-  if (idade >= 5 && idade <= 50) {
+  if (idade >= 5 && idade <= 99) {
     //alert("Maior de 5, pode se cadastrar.");
     return true;
   }
   // Se for maior que 50 !
   //return false;
+}
+/* ============== VALIDAÇÃO CAMPO DATA DE NASCIMENTO ALUNO ============== */
+function validadata_aluno_doc() {
+  var data = document.getElementById("data_emissao_doc").value; // pega o valor do input
+  data = data.replace(/\//g, "-"); // Substitui eventuais barras (ex. IE) "/" por hífen "-"
+  var data_array = data.split("-"); // Quebra a data em array
+  // Para o IE onde será inserido no formato dd/MM/yyyy
+  if (data_array[0].length != 4) {
+    data = data_array[2] + "-" + data_array[1] + "-" + data_array[
+      0]; // remonto a data no formato yyyy/MM/dd
+  }
+  // Compara as datas e calcula a idade
+  var hoje = new Date();
+  var nasc = new Date(data);
+  var idade = hoje.getFullYear() - nasc.getFullYear();
+  var m = hoje.getMonth() - nasc.getMonth();
+  if (m < 0 || (m === 0 && hoje.getDate() < nasc.getDate())) idade--;
+  /* ============== IDADE MENO QUE  ============== */
+  if (idade < 0) {
+    alert("Selecione uma data do documento válida!");
+    return false;
+  }
 }
 /* ============== VALIDAÇÃO CAMPO DATA DE NASCIMENTO FUNCIONARIO ============== */
 function validadata_funcionario() {
