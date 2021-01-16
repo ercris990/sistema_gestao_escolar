@@ -398,7 +398,7 @@ class Funcionario extends CI_Controller
 		$this->db->from('assiduidade_funcionario');												
 		$this->db->where('mes_ano', $mes);
 		$this->db->group_by('assiduidade_funcionario.funcionario_id');											
-		$this->db->order_by("nivel_acesso", "asc");  												 									 	
+		$this->db->order_by("nivel_acesso", "asc");  												 									
 		$this->db->join('funcionario', 'funcionario.id_funcionario = assiduidade_funcionario.funcionario_id');		
 		$dados["assiduidade_funcionarios"] = $this->db->get()->result();
 		/*-----------------------------------------------------------------------------------------------------------------------------*/ 

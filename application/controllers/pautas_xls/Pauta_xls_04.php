@@ -93,7 +93,7 @@ class Pauta_xls_04 extends CI_Controller
 			$sheet->setCellValue('A2', 'REPÚBLICA DE ANGOLA');
 			$sheet->setCellValue('A3', 'MISNISTERIO DA EDUCAÇÃO');
 			$sheet->setCellValue('A4', 'REPARTIÇÃO DE EDUCAÇÃO DO DISTRITO URBANO DO RANGEL');
-			$sheet->setCellValue('A5', 'ESCOLADO ENSINO PRIMÁRIO N.º 1188 (EX. 5028)');
+			$sheet->setCellValue('A5', 'ESCOLA DO ENSINO PRIMÁRIO N.º 1523 (EX. 1188)');
 			/* ----------------------------------------------------------------------------------------------------------- */
 			$sheet->setCellValue('C8', 'Ano Lectivo: ' .$dados['dados_turma']->ano_let);
 			$sheet->setCellValue('D8', 'Período: ' .$dados['dados_turma']->nome_periodo);
