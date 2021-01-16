@@ -5,39 +5,50 @@ setlocale( LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese' );
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class Mapa_faltas_funcionarios extends CI_Controller 
+class Mapa_faltas_alunos extends CI_Controller 
 {
-	public function exportar_mapa($mes)
+	public function exportar_mapa($anolectivo, $turma)
 	{
-		/*-----------------------------------------------------------------------------------------------------------------------------*/ 
-		$this->db->select('*');													  					
-		$this->db->from('assiduidade_funcionario');												
-		$this->db->where('mes_ano', $mes);
-		$this->db->group_by('assiduidade_funcionario.funcionario_id');											
-		$this->db->order_by("nivel_acesso", "asc");
-		$this->db->join('funcionario', 'funcionario.id_funcionario = assiduidade_funcionario.funcionario_id');		
-		$dados["assiduidade_funcionarios"] = $this->db->get()->result();
-		/*-----------------------------------------------------------------------------------------------------------------------------*/ 
-		$this->db->select_sum('falta');																// de notas disciplina
-		$this->db->select_sum('justificacao');														// de notas disciplina
-		$this->db->from('assiduidade_funcionario');													// de notas disciplina
-		$this->db->where('mes_ano', $mes);															// filtro - anolectivo
-		$this->db->group_by('assiduidade_funcionario.funcionario_id');											
-		$this->db->order_by("nivel_acesso", "asc");  	
-		$this->db->join('funcionario', 'funcionario.id_funcionario = assiduidade_funcionario.funcionario_id');		
-		$dados['num_faltas'] = $this->db->get()->result();											// retorna várias linhas
-		/*-----------------------------------------------------------------------------------------------------------------------------*/ 
-		$dados["mes"] = $mes;
+		/*-----------------------------------------------------------------------------------------------------------*/
+			$this->db->select('*'); // select tudo
+			$this->db->from('notas_disciplina'); // da tbl matricula
+			$this->db->where("anolectivo_id", $anolectivo); // onde
+			$this->db->where("turma_id", $turma); // onde
+			$this->db->join('aluno', 'aluno.id_aluno = notas_disciplina.aluno_id'); // join ano lectivo e matricula
+			$this->db->join('anolectivo', 'anolectivo.id_ano = notas_disciplina.anolectivo_id'); // join ano lectivo e matricula
+			$this->db->join('turma', 'turma.id_turma = notas_disciplina.turma_id'); // join turma e matricula
+			$this->db->join('classe', 'classe.id_classe = turma.classe_id'); // Join tbl classe [turma]
+			$this->db->join('periodo', 'periodo.id_periodo = turma.periodo_id'); // join periodo e turma
+			$this->db->join('sala', 'sala.id_sala = turma.sala_id'); // join periodo e turma
+			$dados["dados_turma"] = $this->db->get()->row(); // retorna 1 linha
 		/*-------------------------------------------------------------------------*/
-		$spreadsheet = new Spreadsheet();
-		$sheet = $spreadsheet->getActiveSheet();
+			$this->db->from('assiduidade_alunos');																								// de notas disciplina
+			$this->db->where("anolectivo_id", $anolectivo);																				// filtro - anolectivo
+			$this->db->where("turma_id", $turma);																									// filtro - turma
+			$this->db->join('aluno', 'aluno.id_aluno = assiduidade_alunos.aluno_id', 'left');			// join turma e matricula
+			$this->db->group_by('assiduidade_alunos.aluno_id');																		// agrupamento
+			$this->db->order_by("nome", "asc");  												 													// Ordenar a travez do nome
+			$dados['alunos'] = $this->db->get()->result();																				// retorna várias linhas
+			/*--------------------------------------------------------------------------------------------------------------------------------*/
+			$this->db->select_sum('falta');																												// de notas disciplina
+			$this->db->select_sum('justificacao');																								// de notas disciplina
+			$this->db->from('assiduidade_alunos');																								// de notas disciplina
+			$this->db->where("anolectivo_id", $anolectivo);																				// filtro - anolectivo
+			$this->db->where("turma_id", $turma);																									// filtro - turma
+			$this->db->join('aluno', 'aluno.id_aluno = assiduidade_alunos.aluno_id', 'left');			// join turma e matricula
+			$this->db->group_by('assiduidade_alunos.aluno_id');																		// agrupamento
+			$this->db->order_by("nome", "asc");  												 													// Ordenar a travez do nome
+			$dados['num_faltas'] = $this->db->get()->result();																		// retorna várias linhas
+		/*-------------------------------------------------------------------------*/
+			$spreadsheet = new Spreadsheet();
+			$sheet = $spreadsheet->getActiveSheet();
 		/*-------------------------------------------------------------------------*/
 		// $objPHPExcel->setActiveSheetIndex(0);
-		/* ================ Ocultar Linha de Grade ================ */ 
-		$spreadsheet->getActiveSheet()->setShowGridlines(FALSE);
-		$spreadsheet->getActiveSheet()->setTitle("Mapa de Faltas - Funcionarios");
-		/*-------------------------------------------------------------------------*/
-		$spreadsheet->getActiveSheet()->getStyle('B9')->getAlignment()->setWrapText(true);
+			/* ================ Ocultar Linha de Grade ================ */ 
+			$spreadsheet->getActiveSheet()->setShowGridlines(FALSE);
+			$spreadsheet->getActiveSheet()->setTitle("Mapa de Faltas - Alunos");
+			/*-------------------------------------------------------------------------*/
+			$spreadsheet->getActiveSheet()->getStyle('B9')->getAlignment()->setWrapText(true);
 		/*					MESCLAGEM DE CELULAS - VERTICAL
 		---------------------------------------------------------------------------*/
 		$spreadsheet->getActiveSheet()->mergeCells('A8:A9');
@@ -62,6 +73,7 @@ class Mapa_faltas_funcionarios extends CI_Controller
 		$spreadsheet->getActiveSheet()->getStyle('A4:F4')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 		$spreadsheet->getActiveSheet()->getStyle('A6:F6')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 		$spreadsheet->getActiveSheet()->getStyle('A8')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+		$spreadsheet->getActiveSheet()->getStyle('B7')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 		$spreadsheet->getActiveSheet()->getStyle('B8')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 		$spreadsheet->getActiveSheet()->getStyle('C8')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 		$spreadsheet->getActiveSheet()->getStyle('D8')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
@@ -91,12 +103,18 @@ class Mapa_faltas_funcionarios extends CI_Controller
 		$sheet->setCellValue('A1', 'REPÚBLICA DE ANGOLA');
 		$sheet->setCellValue('A2', 'MISNISTERIO DA EDUCAÇÃO');
 		$sheet->setCellValue('A3', 'REPARTIÇÃO DE EDUCAÇÃO DO DISTRITO URBANO DO RANGEL');
-		$sheet->setCellValue('A4', 'ESCOLA DO ENSINO PRIMÁRIO N.º 1188 EX. 5028');
-		$sheet->setCellValue('A6', 'Levantamento de faltas referentes ao mês de'.strftime(' %B de %Y', strtotime($mes)));
+		$sheet->setCellValue('A4', 'ESCOLA DO ENSINO PRIMÁRIO N.º 1188 (EX. 1188)');
+		$sheet->setCellValue('A6', 'LEVANTAMENTO DE FALTAS');
 		/*-------------------------------------------------------------------------*/
+		$sheet->setCellValue('B7', 'Ano Lectivo: ' .$dados['dados_turma']->ano_let);
+		$sheet->setCellValue('C7', 'Período: ' .$dados['dados_turma']->nome_periodo);
+		$sheet->setCellValue('D7', 'Classe: ' .$dados['dados_turma']->nome_classe);
+		$sheet->setCellValue('E7', 'Turma: ' .$dados['dados_turma']->nome_turma);
+		$sheet->setCellValue('F7', 'Sala: ' .$dados['dados_turma']->numero_sala);
+		/*-------------------------------------------------------------------------*/			
 		$sheet->setCellValue('A8', 'Nº');
 		$sheet->setCellValue('B8', 'NOME COMPLETO');
-		$sheet->setCellValue('C8', 'GÉNERO');
+		$sheet->setCellValue('C8', 'N.º DE PROCESSO');
 		$sheet->setCellValue('D8', 'NÚMERO DE FALTAS');
 		$sheet->setCellValue('D9', 'MARCADAS');
 		$sheet->setCellValue('E9', 'JUSTIFICADAS');
@@ -104,11 +122,13 @@ class Mapa_faltas_funcionarios extends CI_Controller
 		/*-------------------------------------------------------------------------*/
 		$row = 10;
 		$i = 1;
-		foreach($dados['assiduidade_funcionarios'] as $assid_func){
-			/*--------------------------------------------------------------------------------*/
+		foreach($dados['alunos'] as $assid_alunos){
+			/*----------------------------------------------------------*/
+			$spreadsheet->getActiveSheet()->getStyle('C'.$row)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+			/*----------------------------------------------------------*/
 			$sheet->setCellValue('A'.$row, $i);
-			$sheet->setCellValue('B'.$row, $assid_func->nome_funcionario);
-			$sheet->setCellValue('C'.$row, $assid_func->genero_funcionario);
+			$sheet->setCellValue('B'.$row, $assid_alunos->nome);
+			$sheet->setCellValue('C'.$row, $assid_alunos->num_processo);
 			/* ================ Border da Página  ================ */ 
 			$border = [
 				'borders' => [
@@ -156,7 +176,7 @@ class Mapa_faltas_funcionarios extends CI_Controller
 		->setCategory("Relatório de Faltas");
 		/* ----------------------------------------------------------------------------------------------------------- */
 			$writer = new Xlsx($spreadsheet);
-			$filename = "Mapa-de-Faltas-".$mes;
+			$filename = "Mapa-de-Faltas-".$anolectivo;
 			//$filename = 'pauta-01';								// variavel com o nome do fixeiro XLS
 			header('Content-Type: application/vnd.ms-excel');
 			header('Content-Disposition: attachment;filename="'. $filename .'.xlsx"'); 

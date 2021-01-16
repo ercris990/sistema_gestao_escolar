@@ -86,8 +86,7 @@
         </div>
     </div>
     <div>
-        <a href="<?= site_url('mapa_faltas_funcionarios/exportar_mapa/'.$mes)?>"
-            class="btn btn-success bts-sm col-2"><i class="fa fa-file-excel text-success mr-2">
-            </i>EXPORTAR MAPA
+        <a href="<?= site_url('mapa_faltas_funcionarios/exportar_mapa/'.$mes)?>" class="btn btn-success bts-sm col-2">
+            <i class="fa fa-file-pdf mr-2"></i>EXPORTAR PARA EXECEL
         </a>
     </div>

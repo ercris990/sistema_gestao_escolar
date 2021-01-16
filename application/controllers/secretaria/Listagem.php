@@ -397,7 +397,7 @@ class Listagem extends CI_Controller
 		$this->db->select('*');													  					// select tudo
 		$this->db->from('assiduidade_alunos');												 		// da tbl matricula
 		$this->db->where("anolectivo_id", $anolectivo);												// onde
-        $this->db->where("turma_id", $turma);									 					// onde
+    $this->db->where("turma_id", $turma);									 					// onde
 		$this->db->join('aluno', 'aluno.id_aluno = assiduidade_alunos.aluno_id');					// join ano lectivo e matricula
 		$this->db->join('anolectivo', 'anolectivo.id_ano = assiduidade_alunos.anolectivo_id');		// join ano lectivo e matricula
 		$this->db->join('turma', 'turma.id_turma = assiduidade_alunos.turma_id');					// join turma e matricula

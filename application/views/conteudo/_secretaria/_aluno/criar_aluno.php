@@ -76,10 +76,10 @@
             <select name="pais" id="pais" class="form-control border-primary">
               <option value="">Selecione o País</option>
               <?php foreach($pais as $row)
-                                {
-                                    echo '<option value= "'.$row->pais_id.'">'.$row->nome_pais.'</option>';
-                                }
-                                ?>
+					{
+						echo '<option value= "'.$row->pais_id.'">'.$row->nome_pais.'</option>';
+					}
+				?>
             </select>
             <?= form_error('pais'); ?>
           </div>
